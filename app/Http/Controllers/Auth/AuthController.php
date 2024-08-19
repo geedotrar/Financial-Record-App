@@ -18,13 +18,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'username' => 'required|string|unique:users,username|min:8',
+            'password' => 'required|string|confirmed|min:8',
         ]);
 
         $user = User::create([
             'username' => $request->username,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
         ]);
 
         Auth::login($user);
@@ -37,21 +37,24 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
+   public function login(Request $request)
+   {
+    $request->validate([
+        'username'=>'required|string',
+        'password'=>'required|string'
+    ]);
 
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            return redirect()->route('home');
-        } else {
-            return back()->withErrors([
-                'message' => 'The provided credentials do not match our records.',
-            ]);
-        }
+    if(Auth::attempt([
+        'username'=>$request->username,
+        'password'=>$request->password
+        ])) {
+        return redirect()->route('home');
+    }else{
+        return back()->withErrors([
+            'message' => 'Username Or Password Wrong'
+        ]);
     }
+   }
 
     public function logout()
     {

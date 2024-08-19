@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Register</title>
 </head>
 <style>
     body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
-    line-height: 1.5;
-    min-height: 100vh;
-    background: #f3f3f3;
-    flex-direction: column;
-    margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+        background: #f3f3f3;
+        flex-direction: column;
+        margin: 0;
     }
 
     .container {
@@ -26,7 +27,7 @@
         text-align: center;
     }
 
-    button{
+    button {
         background-color: #04AA6D;
         color: white;
         padding: 8px;
@@ -36,15 +37,15 @@
         border-radius: 45px 20px;
     }
 
-    button:hover{
+    button:hover {
         opacity: 0.8;
     }
 
-    .container{
+    .container {
         padding: 16px;
     }
 
-    .container input{
+    .container input {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -52,7 +53,15 @@
         border: 1px solid #ccc;
         box-sizing: border-box;
     }
+
+    .error-message {
+        color: red;
+        font-size: 0.875em;
+        margin-top: 8px;
+        text-align: center;
+    }
 </style>
+
 <body>
     <form method="POST" action="{{route('register')}}">
         @csrf
@@ -61,25 +70,26 @@
                 <h1>Register</h1>
                 <input type="text" id="username" name="username" value="{{old('username')}}" placeholder="Username">
                 @error('username')
-                    <div>{{$message}}</div>
+                <div class="error-message">{{$message}}</div>
                 @enderror
             </div>
             <div>
                 <input type="password" id="password" name="password" placeholder="Password">
                 @error('password')
-                    <div>{{$message}}</div>
+                <div class="error-message">{{$message}}</div>
                 @enderror
             </div>
             <div>
                 <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
                 @error('password_confirmation')
-                    <div>{{$message}}</div>
+                <div class="error-message">{{$message}}</div>
                 @enderror
             </div>
             <div>
                 <button type="submit">Register</button>
             </div>
         </div>
-   </form>
+    </form>
 </body>
+
 </html>

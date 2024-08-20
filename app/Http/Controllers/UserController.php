@@ -11,7 +11,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Handle the logic to store a new user
     }
 
     /**
@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('user.show');
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Handle the logic to show the edit form
     }
 
     /**
@@ -51,7 +51,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Handle the logic to update the user
     }
 
     /**
@@ -59,6 +59,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Handle the logic to delete the user
     }
 }

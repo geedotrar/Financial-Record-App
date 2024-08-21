@@ -1,3 +1,8 @@
+@extends('layouts.layout')
+
+@section('title', 'User - Create')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,3 +14,4 @@
     <h1>hello</h1>
 </body>
 </html>
+@endsection

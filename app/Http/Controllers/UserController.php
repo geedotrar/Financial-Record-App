@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +12,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $users = User::all();
+        return view('user.index',[
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -28,6 +32,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Handle the logic to store a new user
+        $this->validate($request,[
+            'username'=>'required'
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+        ]);
     }
 
     /**

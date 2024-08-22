@@ -68,6 +68,18 @@
         <div class="container">
             <div>
                 <h1>Register</h1>
+                <input type="text" id="name" name="name" value="{{old('name')}}" placeholder="name">
+                @error('name')
+                <div class="error-message">{{$message}}</div>
+                @enderror
+            </div>
+            <div>
+                <input type="text" id="email" name="email" value="{{old('email')}}" placeholder="email">
+                @error('email')
+                <div class="error-message">{{$message}}</div>
+                @enderror
+            </div>
+            <div>
                 <input type="text" id="username" name="username" value="{{old('username')}}" placeholder="Username">
                 @error('username')
                 <div class="error-message">{{$message}}</div>

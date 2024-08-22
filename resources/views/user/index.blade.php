@@ -2,12 +2,21 @@
 
 @section('title', 'Users')
 
+<style>
+.form-container {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+</style>
+
 @section('content')
-<div class="container">
-    <h1 class="mb-4">Index Users</h1>
+<div>
+    <h1 class="mb-4">User Lists</h1>
     <a href="{{ route('admin.users.create') }}" class="btn btn-primary mb-4">Create User</a>
 
-    <table class="table table-striped">
+    <table class="table table-striped form">
         <thead>
             <tr>
                 <th>#</th>
@@ -24,10 +33,11 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->username}}</td>
                     <td>{{$user->email}}</td>
-                    <td><button>Update</button></td>
+                    <td>
+                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-info btn-sm">View</a>
+                    </td>
                 </tr>
             @endforeach
-
         </tbody>
     </table>
 </div>

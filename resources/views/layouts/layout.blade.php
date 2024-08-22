@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
-    <title>MoneyTrackr -@yield('title')</title>
+    <title>MoneyTrackr - @yield('title')</title>
     <style>
         .nav-link {
             color: #000; 
@@ -18,24 +18,39 @@
         .text-green {
             color: #28a745; 
         }
+        .sidebar {
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .form-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        table {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light sidebar">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-green text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">MoneyTrackr</span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <!-- Sidebar Links -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
+                            <a href="{{route('home')}}" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
-                        <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
@@ -82,7 +97,7 @@
                             </ul>
                         </li>
                         <li class="{{ request()->is('admin.users.index') ? 'active' : '' }}">
-                            <a href="{{route('admin.users.index') }}" class="nav-link px-0 align-middle">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
                         </li>
                     </ul>
